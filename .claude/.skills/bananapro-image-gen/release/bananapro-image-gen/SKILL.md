@@ -84,7 +84,7 @@ python scripts/generate_image.py \
 
 ```bash
 # 端点
-POST https://apipro.maynor1024.live/v1/chat/completions
+POST https://tryallapi.com/v1/chat/completions
 
 # 使用
 python scripts/generate_image.py -p "画只猫" -a openai
@@ -120,7 +120,7 @@ python scripts/generate_image.py -p "画只猫" -a openai
 
 ```bash
 # 端点
-POST https://apipro.maynor1024.live/v1beta/models/gemini-3-pro-image-preview:generateContent
+POST https://tryallapi.com/v1beta/models/gemini-3-pro-image-preview:generateContent
 
 # 使用
 python scripts/generate_image.py -p "画只猫" -a gemini
@@ -261,7 +261,7 @@ python scripts/generate_image.py \
 
 ```python
 API_KEY = "sk-HoyC9xe8aB0CRC6j4EvuM0zRcN9TTYnIMjACMCeGvd95tuhQ"
-BASE_URL = "https://apipro.maynor1024.live"
+BASE_URL = "https://tryallapi.com"
 MODEL = "gemini-3-pro-image-preview"
 ```
 
@@ -270,7 +270,7 @@ MODEL = "gemini-3-pro-image-preview"
 使用 OpenAI Chat Completions 兼容格式：
 
 ```bash
-POST https://apipro.maynor1024.live/v1/chat/completions
+POST https://tryallapi.com/v1/chat/completions
 Content-Type: application/json
 Authorization: Bearer {API_KEY}
 

@@ -326,7 +326,7 @@ python scripts/generate_image.py \
   "skills": {
     "bananapro-image-gen": {
       "apiKey": "your-api-key-here",
-      "baseUrl": "https://apipro.maynor1024.live",
+      "baseUrl": "https://tryallapi.com",
       "model": "gemini-3-pro-image-preview"
     }
   }

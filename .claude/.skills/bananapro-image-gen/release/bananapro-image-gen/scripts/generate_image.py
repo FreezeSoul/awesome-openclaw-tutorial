@@ -18,7 +18,7 @@ import re
 # 请通过环境变量或命令行参数提供 API Key
 # export NEXTAI_API_KEY="your-api-key-here"
 DEFAULT_API_KEY = ""  # 不要在代码中硬编码 API Key
-DEFAULT_BASE_URL = "https://apipro.maynor1024.live"
+DEFAULT_BASE_URL = "https://tryallapi.com"
 DEFAULT_MODEL = "gemini-3-pro-image-preview"
 DEFAULT_API_FORMAT = "openai"  # "openai" 或 "gemini"
 

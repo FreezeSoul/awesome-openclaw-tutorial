@@ -165,7 +165,7 @@
       env: {
         vars: {
           OPENAI_API_KEY: "your-relay-api-key",
-          OPENAI_BASE_URL: "https://apipro.maynor1024.live/v1",
+          OPENAI_BASE_URL: "https://tryallapi.com/v1",
         },
       },
       agents: {

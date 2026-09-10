@@ -37,7 +37,7 @@
     "baseUrl": {
       "type": "string",
       "description": "API base URL",
-      "default": "https://apipro.maynor1024.live",
+      "default": "https://tryallapi.com",
       "required": false
     },
     "model": {
