@@ -2,6 +2,9 @@
 
 # 第3章节：快速上手
 
+> ⚠️ **当前基线**：OpenClaw **v2026.9.3**。首次配置优先 `openclaw onboard`；模型登录用 `openclaw models auth login --provider <provider>`（OpenAI 用 `openai`，不要再用 `openai-codex`）。升级后请跑 `openclaw doctor --fix`。
+
+
 > 恭喜你完成了安装！现在开始使用 OpenClaw，体验AI助手的魅力。
 
 ## 快速导航

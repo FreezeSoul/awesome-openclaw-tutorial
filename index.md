@@ -10,7 +10,7 @@ title: 首页
 [![GitHub stars](https://img.shields.io/github/stars/xianyu110/awesome-openclaw-tutorial?style=social)](https://github.com/xianyu110/awesome-openclaw-tutorial)
 [![GitHub forks](https://img.shields.io/github/forks/xianyu110/awesome-openclaw-tutorial?style=social)](https://github.com/xianyu110/awesome-openclaw-tutorial)
 [![License](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-v2026.4.14-green.svg)](https://github.com/xianyu110/awesome-openclaw-tutorial)
+[![Version](https://img.shields.io/badge/version-v2026.9.3-green.svg)](https://github.com/xianyu110/awesome-openclaw-tutorial)
 [![Status](https://img.shields.io/badge/status-完成-success.svg)](reports/PROJECT-SUMMARY.md)
 [![CSDN](https://img.shields.io/badge/CSDN-博客-c32136?style=for-the-badge&logo=csdn)](https://blog.csdn.net/xianyu120)
 [![Bilibili](https://img.shields.io/badge/Bilibili-B站-fb7299?style=for-the-badge&logo=bilibili)](https://space.bilibili.com/399102586)
@@ -20,13 +20,13 @@ title: 首页
 
 > 📖 **纸质书《OpenClaw超级个体实操手册》已上市！** 清华大学出版社出版，在开源教程基础上全面重写+逐条验证。🛒 [京东专属购买链接（¥42，原价¥59.8）](https://item.jd.com/14669463.html)
 
-> 🔄 **2026-04-16 更新说明**：本仓库当前按 **OpenClaw v2026.4.14（稳定版）** 校对；`v2026.4.15-beta.1` 仅作预发布参考。第 `10~15` 章已按官方当前主线重写，优先覆盖 `infer / models / cron / tasks / Task Flow / webhooks / Active Memory / Memory Wiki / 媒体能力`。
+> 🔄 **2026-09-10 更新说明**：本仓库当前按 **OpenClaw v2026.9.3（稳定版，2026-09-08 发布）** 校对；详见 [`updates/2026-09-10-v2026.9.3.md`](updates/2026-09-10-v2026.9.3.md)。第 `1/2/5/7/8/10~15` 章已同步 2026.9 主线。
 
 ---
 
 ## 📖 纸质书：《OpenClaw超级个体实操手册》
 
-⚠️ **当前说明**：开源教程的第 `10~15` 章已按 `v2026.4.14` 主线重写；纸质书仍然是更系统的重写版，适合需要完整、稳定、逐条验证内容的读者。
+⚠️ **当前说明**：开源教程的第 `1/2/5/7/8/10~15` 章已按 `v2026.9.3` 主线修订；纸质书仍然是更系统的重写版，适合需要完整、稳定、逐条验证内容的读者。
 
 **纸质书已全面修正，现已上市！**
 
@@ -190,28 +190,23 @@ openclaw gateway restart
 
 ---
 
-### 🆕 v2026.4.14 稳定版更新（2026年4月14日）
+### 🆕 v2026.9.3 稳定版更新（2026年9月8日）
 
 **当前基线**
-- **稳定版**：`v2026.4.14`
-- **预发布参考**：`v2026.4.15-beta.1`（2026年4月15日）
-- **推荐运行时**：`Node 24`；如继续走兼容路径，建议至少 `Node 22.16+`
-
-**2026.4 主线变化**
-- **Active Memory**：已进入稳定主线，回复前主动拉取相关偏好、上下文和历史细节
-- **Dreaming + Memory Wiki**：长期记忆、结构化 `claim/evidence`、矛盾/新鲜度管理成为主线能力
-- **Task Flow + Webhooks**：自动化从“定时任务”升级到“持久化流程 + 外部事件触发”
-- **`openclaw infer`**：统一 `model / image / audio / tts / video / web / embedding` CLI 入口
-- **内建媒体能力**：官方 `video_generate` / `music_generate` 与 `ComfyUI` provider/plugin 已可直接使用
-- **模型与 provider 修复**：`v2026.4.12` 到 `v2026.4.14` 集中修复了 Codex、Ollama、embedding、媒体、SSRF 与 UI 等一批兼容问题
+- **稳定版**：`v2026.9.3`
+- **推荐运行时**：`Node 26`（或 `Node 24.16+`）；`Node 22` 已不再支持
+- **校验方式**：`npm view openclaw version` 应返回 `2026.9.3`
+- **跳变说明**：[`updates/2026-09-10-v2026.9.3.md`](updates/2026-09-10-v2026.9.3.md)
 
 **升级命令**：
 ```bash
-npm install -g openclaw@2026.4.14
-openclaw --version  # 确认版本为 2026.4.14
+openclaw update --tag 2026.9.3 --yes
+openclaw update repair
+openclaw doctor --fix
+openclaw --version
 ```
 
-> ⚠️ **新手建议**：如果你的目标是“按教程稳定跑通”，优先使用 `v2026.4.14`。`v2026.4.15-beta.1` 适合尝鲜验证，不建议直接作为默认教程基线。
+> ⚠️ **新手建议**：优先使用 `v2026.9.3`。跨版本升级务必备份并执行 `openclaw doctor --fix`（OpenAI 路由迁移、OpenProse 清理、会话 SQLite 相关修复）。
 
 ---
 
@@ -360,6 +355,7 @@ openclaw --version  # 确认版本为 2026.4.14
 ## 📈 项目进度
 
 - ✅ **v1.6**（2026-03-18）：新增一键部署教程（8个平台）
+- ✅ **v1.12**（2026-09-10）：同步 OpenClaw `v2026.9.3`
 - ✅ **v1.10**（2026-04-16）：第 `10~15` 章按 OpenClaw `v2026.4.14` 稳定版主线重写，并同步 README / 章节入口 / 纸书推荐文案
 - ✅ **v1.9**（2026-04-04）：同步橙皮书 v1.3~v1.4 更新——ClawBot 改为微信官方插件（iLink 协议）、新增 Chrome DevTools 附着模式、Dashboard v2 详解、腾讯全家桶、GLM-5-Turbo、安全漏洞统计、Skills 数据更新（55内置/13,700+ ClawHub）
 - 🔄 **v1.11**（进行中）：继续清理第 `1~9` 章旧口径与历史案例
@@ -385,7 +381,7 @@ openclaw --version  # 确认版本为 2026.4.14
 **最后更新**：2026年4月4日
 **教程版本**：v1.9
 **总字数**：408,000字（15章节 + 15附录）
-**适用OpenClaw版本**：2026.4.11（稳定版） / 2026.4.12-beta.1（预发布参考）
+**适用OpenClaw版本**：2026.9.3（稳定版）
 
 🎉 **教程已完成 | 支持续优化 | 完全免费** 🎉
 🚀 **一个人 + OpenClaw = 无限可能** 🚀

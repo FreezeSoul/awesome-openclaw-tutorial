@@ -194,6 +194,7 @@
 
     # 添加认证（API Key / OAuth / setup-token）
     openclaw models auth add
+    openclaw models auth login --provider openai --set-default
 
     # 模型别名管理
     openclaw models aliases list
@@ -220,7 +221,7 @@
 
 ## A.7 Skills管理
 
-> ⚠️ Skills的安装/卸载/更新通过 `clawhub` CLI 完成，而非 `openclaw skills` 命令。
+> ⚠️ **2026.9 主线**：优先使用 `openclaw skills` 查看/检查/管理；`clawhub install …` 仅作历史参考，不要默认照抄。
 
 ### openclaw skills（查看与检查）
 
@@ -236,7 +237,7 @@
     # 检查Skills依赖是否满足
     openclaw skills check
 
-### clawhub（安装/卸载/更新/搜索）
+### clawhub（历史参考：安装/卸载/更新/搜索）
 
     # 全局安装ClawHub CLI
     npm install -g clawhub
@@ -247,11 +248,11 @@
     clawhub search --sort downloads
 
     # 安装Skills
-    clawhub install <slug>
-    clawhub install brave-search
+    # 历史参考（非 2026.9 默认推荐）：clawhub install <slug>
+    # clawhub install brave-search  # 历史参考
 
     # 安装到指定目录
-    clawhub install <slug> --dir /path/to/skills
+    # 历史参考（非 2026.9 默认推荐）：clawhub install <slug> --dir /path/to/skills
 
     # 查看Skills详情（不安装）
     clawhub inspect <slug>
@@ -441,7 +442,7 @@
     clawhub search 截图
 
     # 2. 安装Skills
-    clawhub install peekaboo
+    # clawhub install peekaboo  # 历史参考
 
     # 3. 确认已安装
     openclaw skills list
