@@ -4,7 +4,7 @@
 
 > 本章节将手把手教你安装 OpenClaw。
 
-> ⚠️ **当前基线**：截至 **2026-06-18**，本教程推荐使用 **OpenClaw v2026.6.8（稳定版，2026-06-16 发布）**。运行时优先使用 **Node 24**；如果自行管理 Node，至少使用 **Node 22.19+**。
+> ⚠️ **当前基线**：截至 **2026-09-10**，本教程推荐使用 **OpenClaw v2026.9.3（稳定版，2026-09-08 发布）**。运行时要求 **Node 24.16+** 或 **Node 26.1+**（推荐 Node 26）；Node 22 / 旧 24.x 已不再支持。
 
 ![OpenClaw 安装界面](https://upload.maynor1024.live/file/1771085321300_installation-interface.png)
 
@@ -145,7 +145,7 @@ curl -fsSL https://openclaw.ai/install.sh | bash
 ```bash
 openclaw --version
 ```
-如果显示版本号（如 `2026.6.8`），说明安装成功！
+如果显示版本号（如 `2026.9.3`），说明安装成功！
 
 #### 第四步：初始化配置
 
@@ -435,7 +435,7 @@ npm -v
 
 ```powershell
 # 安装最新稳定版
-npm install -g openclaw@latest
+npm install -g openclaw@latest --allow-scripts=openclaw
 
 # 或安装汉化版
 npm install -g @qingchencloud/openclaw-zh@latest
@@ -473,7 +473,7 @@ openclaw --help
 npm cache clean --force
 
 # 重新安装
-npm install -g openclaw@latest --force
+npm install -g openclaw@latest --allow-scripts=openclaw --force
 ```
 
 **访问题：Windows Defender阻止**
@@ -746,7 +746,7 @@ openclaw onboard
    openclaw --version
    ```
    
-   如果显示版本号（如 `2026.6.8`），说明OpenClaw已预装成功。
+   如果显示版本号（如 `2026.9.3`），说明OpenClaw已预装成功。
 
 ![OpenClaw镜像](https://upload.maynor1024.live/file/1770742213992_02-openclaw-image.png)
 
@@ -3125,11 +3125,11 @@ openclaw config set gateway.port 18790
 
 > 🔄 **保持最新**：OpenClaw 迭代很快，升级通常会带来安全修复、provider 兼容性修复、渠道稳定性改进和新模型目录。
 
-> ⚠️ **当前推荐版本**：截至 **2026-06-18**，本教程推荐使用 **OpenClaw 2026.6.8（稳定版）**。升级前先备份 `~/.openclaw`；升级后先运行 `openclaw update repair`、`openclaw doctor` 和状态检查。
+> ⚠️ **当前推荐版本**：截至 **2026-09-10**，本教程推荐使用 **OpenClaw 2026.9.3（稳定版）**。升级前先备份 `~/.openclaw`；升级后务必运行 `openclaw doctor --fix`、`openclaw update repair` 和状态检查。
 
 ### 推荐版本
 
-**当前推荐版本**：`2026.6.8`
+**当前推荐版本**：`2026.9.3`
 
 **版本确认命令**：
 
@@ -3138,7 +3138,7 @@ npm view openclaw version
 openclaw --version
 ```
 
-如果 `npm view openclaw version` 显示 `2026.6.8` 或更高版本，而你本机 `openclaw --version` 更低，就可以考虑升级。
+如果 `npm view openclaw version` 显示 `2026.9.3` 或更高版本，而你本机 `openclaw --version` 更低，就可以考虑升级。
 
 ### 升级前必做
 
@@ -3158,14 +3158,14 @@ openclaw channels status
 
 ### 方式一：使用 `openclaw update`（推荐）
 
-`openclaw update` 是 2026.6 CLI 的统一升级入口。全局 npm 安装会通过检测到的包管理器更新；source checkout 会走 git 更新、依赖安装、构建和 doctor 流程。
+`openclaw update` 是当前 CLI 的统一升级入口。全局 npm 安装会通过检测到的包管理器更新；source checkout 会走 git 更新、依赖安装、构建和 doctor 流程。
 
 ```bash
 # 预览升级动作，不真正写入
-openclaw update --tag 2026.6.8 --dry-run
+openclaw update --tag 2026.9.3 --dry-run
 
 # 升级到教程推荐版本
-openclaw update --tag 2026.6.8 --yes
+openclaw update --tag 2026.9.3 --yes
 
 # 如果你想直接跟随稳定频道
 openclaw update --channel stable --yes
@@ -3175,12 +3175,15 @@ openclaw update --channel stable --yes
 
 ```bash
 openclaw update repair
-openclaw doctor
+openclaw doctor --fix
 openclaw gateway restart
 openclaw --version
 openclaw gateway status
 openclaw channels status
+openclaw models status
 ```
+
+> 从 `2026.6.x` / `2026.7.x` / `2026.8.x` 跨大版本升级时，`doctor --fix` 会处理：OpenAI 路由迁移（`codex/*`、`openai-codex/*` → `openai/*`）、OpenProse 残留清理、会话 SQLite 相关修复、Workshop 技能归属迁移等。
 
 ### 方式二：npm 固定版本安装（兜底）
 
@@ -3191,11 +3194,11 @@ openclaw channels status
 openclaw gateway stop
 
 # 安装推荐版本
-npm install -g openclaw@2026.6.8 --force
+npm install -g openclaw@2026.9.3 --allow-scripts=openclaw
 
 # 修复更新后的插件/配置收敛状态
 openclaw update repair
-openclaw doctor
+openclaw doctor --fix
 
 # 重启并验证
 openclaw gateway restart
@@ -3207,7 +3210,7 @@ openclaw channels status
 如果你不想固定版本，也可以使用：
 
 ```bash
-npm install -g openclaw@latest
+npm install -g openclaw@latest --allow-scripts=openclaw
 ```
 
 ### 方式三：官方安装脚本
@@ -3242,6 +3245,7 @@ docker compose logs -f
 
 ```bash
 openclaw --version
+node -v
 openclaw doctor
 openclaw gateway status
 openclaw channels status
@@ -3250,30 +3254,40 @@ openclaw models status --probe
 openclaw skills check
 ```
 
+跨大版本后若仍有旧路由/插件残留，再跑一次：
+
+```bash
+openclaw doctor --fix
+```
+
 看到下面结果，才算升级基本完成：
 
-- `openclaw --version` 返回 `2026.6.8` 或你指定的新版本
+- `openclaw --version` 返回 `2026.9.3` 或你指定的新版本
 - `openclaw doctor` 没有阻塞级错误
 - `openclaw gateway status` 显示 Gateway 正常运行
 - `openclaw channels status` 能看到你需要的渠道状态
 - `openclaw models status --probe` 没有明显认证失败
 
-### 2026.6.8 升级后重点验证
+### 2026.9.3 升级后重点验证
 
-`v2026.6.8` 的重点不是“换一个版本号”，而是这些能力更稳了：
+从旧基线跳到 `v2026.9.3`，优先确认这些主线变化（而不是只核对版本号）：
 
-- **Telegram / WhatsApp**：Telegram 富文本、表格、列表、折叠引用、换行和 CLI-backed replies 更可靠；WhatsApp 支持已配置 ACP 绑定
-- **模型目录**：GLM-5.2、Claude Haiku 4.5 等模型目录进入主线，provider ID 和 SecretRef 认证更规范
-- **`/usage` footer**：用量 footer、默认模板和格式化更稳定，坏模板会给警告
-- **Web 搜索默认策略**：Parallel Free、DuckDuckGo、Ollama、Codex Hosted Search 等 key-free provider 需要显式 opt-in
+- **Node 运行时**：需要 Node **24.16+** 或 **26.1+**（推荐 26）；升级 OpenClaw 前先升级 Node
+- **Doctor 迁移**：`openclaw doctor --fix`（OpenAI 路由、`OpenProse` 清理、会话/状态修复）
+- **会话存储**：`2026.8.1` 起会话/转录进入 SQLite——**不要在未备份时降级**
+- **Skills / Workshop**：优先 `openclaw skills …`；Workshop 技能按 Agent 持久化；旧 `clawhub install …` 仅作历史参考
+- **更新恢复**：`2026.9.x` 支持更新预演与更干净的失败恢复；可用 `openclaw update status` 查看报告
 
-建议升级后至少做这 4 个 smoke test：
+建议升级后至少做这组 smoke test：
 
 ```bash
+node -v
+openclaw --version
+openclaw doctor
 openclaw infer model run --prompt "Reply with exactly: smoke-ok" --json
-openclaw infer web search --query "OpenClaw v2026.6.8 release notes" --json
 openclaw models status --probe
 openclaw gateway status
+openclaw channels status
 ```
 
 ### 常见升级问题
@@ -3281,14 +3295,14 @@ openclaw gateway status
 #### npm 报 EEXIST
 
 ```bash
-npm install -g openclaw@2026.6.8 --force
+npm install -g openclaw@2026.9.3 --allow-scripts=openclaw
 ```
 
 #### Gateway 启动失败
 
 ```bash
 openclaw update repair
-openclaw doctor
+openclaw doctor --fix
 openclaw gateway restart
 tail -f ~/.openclaw/logs/gateway.log
 ```
@@ -3298,9 +3312,9 @@ tail -f ~/.openclaw/logs/gateway.log
 这通常说明你正在用旧 CLI 读取新配置。先升级 CLI，再运行 repair 和 doctor：
 
 ```bash
-npm install -g openclaw@2026.6.8 --force
+npm install -g openclaw@2026.9.3 --allow-scripts=openclaw
 openclaw update repair
-openclaw doctor
+openclaw doctor --fix
 ```
 
 #### 端口被占用

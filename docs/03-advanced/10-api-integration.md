@@ -8,8 +8,8 @@
 
 ## 版本基线（请先统一口径）
 
-- **当前稳定版**：`v2026.6.8`（2026 年 6 月 16 日发布）
-- 本章默认按 **`v2026.6.8` 稳定版** 写；历史 beta 内容只作为旧案例参考
+- **当前稳定版**：`v2026.9.3`（2026 年 6 月 16 日发布）
+- 本章默认按 **`v2026.9.3` 稳定版** 写；历史 beta / 旧模型路由只作为旧案例参考
 
 > 如果你机器上还停在 `v2026.4.12` 或更早版本，先升级再看这一章，不然你会在命令名、能力入口和配置路径上反复踩坑。
 
@@ -83,7 +83,7 @@ openclaw models status
 openclaw models list
 
 # 3) 按 provider 登录
-openclaw models auth login --provider openai-codex --set-default
+openclaw models auth login --provider openai --set-default
 openclaw models auth login --provider anthropic --method cli --set-default
 
 # 4) 设置主模型与图像理解兜底模型
@@ -156,7 +156,7 @@ openclaw infer embedding create --text "friendly lobster" --json
 ### 10.3.2 文本推理：把零散脚本换成标准命令
 
 ```bash
-openclaw infer model run   --prompt "用 5 条 bullet 总结 OpenClaw v2026.6.8 的主要变化"   --json
+openclaw infer model run   --prompt "用 5 条 bullet 总结 OpenClaw v2026.9.3 的主要变化"   --json
 ```
 
 适合：
@@ -213,7 +213,7 @@ openclaw infer video generate   --prompt "一段 5 秒的电影感镜头：小�
 ### 10.3.7 Web 搜索与抓取：先用官方再谈爬虫
 
 ```bash
-openclaw infer web search --query "OpenClaw v2026.6.8 release notes" --json
+openclaw infer web search --query "OpenClaw v2026.9.3 release notes" --json
 openclaw infer web fetch --url https://docs.openclaw.ai/cli/infer --json
 ```
 

@@ -8,8 +8,8 @@
 
 ## 版本基线
 
-- **当前稳定版**：`v2026.6.8`（2026-06-16 发布）
-- 本章默认按 `v2026.6.8` 写；历史 beta 内容只在旧案例里保留
+- **当前稳定版**：`v2026.9.3`（2026-09-08 发布）
+- 本章默认按 `v2026.9.3` 写；遇到旧 `openai-codex/*` / OpenProse / `clawhub install …` 请先当历史参考
 
 ---
 
@@ -127,19 +127,19 @@ openclaw models image-fallbacks add google/gemini-2.5-pro
 
 ### 11.2.3 当前值得注意的 provider 变化
 
-根据 `v2026.4.12` 到 `v2026.6.8` 的官方 release notes：
+根据官方 release notes（`2026.8.1` OpenClaw 2.0 → `v2026.9.3`）：
 
-- `v2026.4.12` 新增了**bundled Codex provider**，`codex/gpt-*` 这类模型现在走独立 Codex 路线
-- `v2026.4.12` 新增 **LM Studio provider**，本地 / 自托管 OpenAI-compatible 模型更顺手
-- `v2026.6.8` 增加了对 **`gpt-5.4-pro`** 的前向兼容支持
-- `v2026.6.8` 还修复了大量 Codex、Ollama、embedding provider 的兼容问题
+- **`2026.8.1` 起**：会话/转录迁入 SQLite；升级前务必备份 `~/.openclaw`
+- **OpenAI 路由迁移（Breaking）**：旧的 `codex/*`、`openai-codex/*` 应迁移为规范的 `openai/*`；执行 `openclaw doctor --fix`
+- **OpenProse 已移除（Breaking）**：内置 OpenProse 插件与 `/prose` 已下线；清配置用 `openclaw doctor --fix`，需要时再按官方文档安装上游 Agent Skill
+- **`v2026.9.3`**：更新预演/恢复更稳；Skill Workshop 改为按 Agent 持久化集合；Node 要求提升到 **24.16+ / 26.1+**
+- 具体可选模型 ID 请以 `openclaw models list` / Control UI 目录为准，不要照抄过期型号
 
-如果你要做编程工作流，当前更推荐的几个方向：
+如果你要做编程工作流，当前更推荐先走：
 
-- `openai/gpt-5.4`
-- `openai-codex/gpt-5.4`
-- `anthropic/claude-sonnet-4-5`
-- `google/gemini-2.5-pro`
+- `openai/...`（ChatGPT/Codex 订阅或 API；用 `models auth login --provider openai`）
+- `anthropic/...`
+- `google/...`
 
 ### 11.2.4 认证方式建议
 
@@ -148,7 +148,7 @@ openclaw models image-fallbacks add google/gemini-2.5-pro
 openclaw models auth add
 
 # 直接对某个 provider 发起登录
-openclaw models auth login --provider openai-codex --set-default
+openclaw models auth login --provider openai --set-default
 openclaw models auth login --provider anthropic --method cli --set-default
 ```
 
@@ -429,7 +429,7 @@ openclaw approvals allowlist add --agent main "/usr/bin/uname"
 }
 ```
 
-它会在弱本地模型场景下去掉一些重量级默认工具，降低提示词体积。**注意这是历史 beta 能力**，在 `v2026.6.8` 环境里请先查官方配置文档和 `openclaw config schema`，不要直接照抄到生产主环境。
+它会在弱本地模型场景下去掉一些重量级默认工具，降低提示词体积。**注意这是历史 beta 能力**，在 `v2026.9.3` 环境里请先查官方配置文档和 `openclaw config schema`，不要直接照抄到生产主环境。
 
 ### 11.7.3 本章推荐的检查顺序
 

@@ -2,14 +2,14 @@
 
 # 第12章节 个人效率实战（知识工作、编程、创作、学习、个人运营）
 
-> 本章目标：不再用一堆失效 Skill 名称堆案例，而是基于 OpenClaw `v2026.6.8` 的官方能力，给出 5 类高频个人效率工作流。
+> 本章目标：不再用一堆失效 Skill 名称堆案例，而是基于 OpenClaw `v2026.9.3` 的官方能力，给出 5 类高频个人效率工作流。
 
 ---
 
 ## 版本基线
 
-- **当前稳定版**：`v2026.6.8`（2026-06-16 发布）
-- 本章默认按 `v2026.6.8` 稳定版写
+- **当前稳定版**：`v2026.9.3`（2026-09-08 发布）
+- 本章默认按 `v2026.9.3` 稳定版写
 
 ---
 
@@ -60,7 +60,7 @@ openclaw cron add   --name "Morning brief"   --cron "0 7 * * *"   --tz "Asia/Sha
 配合：
 
 ```bash
-openclaw infer web search --query "OpenClaw v2026.6.8 release notes" --json
+openclaw infer web search --query "OpenClaw v2026.9.3 release notes" --json
 openclaw infer web fetch --url https://docs.openclaw.ai/cli/infer --json
 ```
 
@@ -104,8 +104,8 @@ openclaw infer audio transcribe   --file ./meeting.m4a   --language zh   --promp
 如果你是以“代码交付”为主，优先把编程模型路线配清楚：
 
 ```bash
-openclaw models auth login --provider openai-codex --set-default
-openclaw models set openai-codex/gpt-5.4
+openclaw models auth login --provider openai --set-default
+openclaw models set openai/gpt-5.4
 openclaw models fallbacks add anthropic/claude-sonnet-4-5
 ```
 
